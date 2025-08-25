@@ -1,0 +1,21 @@
+syntax = "proto2";
+
+message LicenseRequest {
+  optional bytes pssh = 2;
+  optional bytes client_id = 3;
+  optional LicenseType type = 4;
+  enum LicenseType {
+    STREAMING = 1;
+    OFFLINE = 2;
+  }
+}
+
+message SignedMessage {
+  enum MessageType {
+    LICENSE_REQUEST = 1;
+    LICENSE = 2;
+  }
+  optional MessageType type = 1;
+  optional bytes msg = 2;
+  optional bytes signature = 3;
+}
